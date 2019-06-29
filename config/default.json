@@ -1,0 +1,15 @@
+{
+    "sequelize": {
+        "db": "test",
+        "user": "",
+        "pass": "",
+        "options": {
+            "dialect": "sqlite",
+            "storage": "test.db"
+        },
+        "force": true
+    },
+
+  "host": "localhost",
+  "port": 3000
+}

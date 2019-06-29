@@ -1,0 +1,32 @@
+{
+  "name": "koa-sequelize-template",
+  "version": "0.0.1",
+  "description": "Template for Koa-Sequelize api",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Koa",
+    "Sequelize",
+    "Api"
+  ],
+  "author": "Constantine Timerkhanov",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "config": "^3.1.0",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "sequelize": "^5.9.0",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
+}
