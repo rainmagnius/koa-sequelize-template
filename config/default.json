@@ -1,15 +1,17 @@
 {
-    "sequelize": {
-        "db": "test",
-        "user": "",
-        "pass": "",
-        "options": {
-            "dialect": "sqlite",
-            "storage": "test.db"
-        },
-        "force": true
+  "sequelize": {
+    "db": "test",
+    "user": "",
+    "pass": "",
+    "options": {
+      "dialect": "sqlite",
+      "storage": "test.db"
     },
-
+    "force": true
+  },
+  "secretKeys": [
+    "session-secret-key"
+  ],
   "host": "localhost",
   "port": 3000
 }

@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     models.User.belongsToMany(models.Group, { through: 'UserGroup' });
   };
 
-  User.prototype.checkPassword = async function (password) {
+  User.prototype.isValidPassword = async function (password) {
     return bcrypt.compare(password, this.password);
   };
 
