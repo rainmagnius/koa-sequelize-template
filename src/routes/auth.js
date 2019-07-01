@@ -4,40 +4,49 @@ module.exports = function (container) {
   const passport = container.get('passport');
   const router = new KoaRouter();
 
-  router.get('/register', (ctx) => {
-    return passport.authenticate('register', (err, user, info) => {
+  router.get('/register', async (ctx) => {
+    return passport.authenticate('register', async (err, user, info) => {
       if (err) {
-        ctx.body = 'Registration error';
+        throw err;
       } else if (user === false) {
-        ctx.body = info.message;
+        throw {
+          code: 401,
+          message: info.message,
+        };
       } else {
-        ctx.body = 'OK';
-        return ctx.login(user);
+        await ctx.login(user);
+        ctx.body = {
+          message: 'Signed up!',
+        };
       }
     })(ctx);
   });
 
-  router.get('/login', (ctx) => {
-    return passport.authenticate('login', (err, user, info) => {
+  router.get('/login', async (ctx) => {
+    return passport.authenticate('login', async (err, user, info) => {
       if (err) {
-        ctx.body = 'Login error';
+        throw err;
       } else if (user === false) {
-        ctx.body = info.message;
+        throw {
+          code: 401,
+          message: info.message,
+        };
       } else {
-        ctx.body = 'OK';
-        return ctx.login(user);
+        await ctx.login(user);
+        ctx.body = {
+          message: 'Logged in!',
+        };
       }
     })(ctx);
   });
 
   router.get('/logout', (ctx) => {
     if (ctx.isAuthenticated()) ctx.session = null;
-    ctx.body = 'OK';
+    ctx.body = { message: 'Logged out' };
   });
 
   router.get('/check', (ctx) => {
-    if (ctx.isAuthenticated()) ctx.body = 'Authenticated!';
-    else ctx.body = 'Not authenticated';
+    ctx.body = { message: ctx.isAuthenticated() ? 'Authenticated!' : 'Not authenticated.' };
   });
 
   return router;

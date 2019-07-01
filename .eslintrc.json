@@ -16,6 +16,7 @@
     },
     "rules": {
         "arrow-body-style": "off",
-        "func-names": "off"
+        "func-names": "off",
+        "no-throw-literal": "off"
     }
 }

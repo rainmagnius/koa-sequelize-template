@@ -18,7 +18,7 @@ async function initRouter(container) {
     .forEach((file) => {
       // eslint-disable-next-line
       const nestedRouter = require(path.join(__dirname, file))(container);
-      Router.use(nestedRouter.routes(), nestedRouter.allowedMethods());
+      Router.use(nestedRouter.routes());
     });
 
   return Router;

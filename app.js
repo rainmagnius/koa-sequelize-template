@@ -5,6 +5,7 @@ const session = require('koa-session');
 const Router = require('./src/routes');
 const Sequelize = require('./src/model');
 const Passport = require('./src/util/passport');
+const resultHandler = require('./src/middleware/resultHandler');
 
 async function main() {
   const app = new Koa();
@@ -16,6 +17,8 @@ async function main() {
 
   const passport = Passport(container);
   container.set('passport', passport);
+
+  app.use(resultHandler());
 
   app.keys = config.secretKeys;
 
