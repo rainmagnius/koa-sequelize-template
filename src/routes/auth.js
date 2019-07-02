@@ -3,6 +3,7 @@ const KoaRouter = require('koa-router');
 module.exports = function (container) {
   const passport = container.get('passport');
   const router = new KoaRouter();
+  const roles = container.get('roles');
 
   router.get('/register', async (ctx) => {
     return passport.authenticate('register', async (err, user, info) => {
@@ -40,8 +41,8 @@ module.exports = function (container) {
     })(ctx);
   });
 
-  router.get('/logout', (ctx) => {
-    if (ctx.isAuthenticated()) ctx.session = null;
+  router.get('/logout', roles.is('user'), (ctx) => {
+    ctx.session = null;
     ctx.body = { message: 'Logged out' };
   });
 

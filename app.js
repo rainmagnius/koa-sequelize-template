@@ -5,6 +5,7 @@ const session = require('koa-session');
 const Router = require('./src/routes');
 const Sequelize = require('./src/model');
 const Passport = require('./src/util/passport');
+const Roles = require('./src/util/roles');
 const resultHandler = require('./src/middleware/resultHandler');
 
 async function main() {
@@ -18,6 +19,9 @@ async function main() {
   const passport = Passport(container);
   container.set('passport', passport);
 
+  const roles = Roles();
+  container.set('roles', roles);
+
   app.use(resultHandler());
 
   app.keys = config.secretKeys;
@@ -26,6 +30,8 @@ async function main() {
 
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.use(roles.middleware());
 
   const router = await Router(container);
   app.use(router.routes());
