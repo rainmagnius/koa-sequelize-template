@@ -1,0 +1,17 @@
+{
+  "sequelize": {
+    "db": "prod",
+    "user": "",
+    "pass": "",
+    "options": {
+      "dialect": "sqlite",
+      "storage": "production.db"
+    },
+    "force": false
+  },
+  "secretKeys": [
+    "session-secret-key"
+  ],
+  "host": "localhost",
+  "port": 3000
+}

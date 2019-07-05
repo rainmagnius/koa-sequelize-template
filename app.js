@@ -7,6 +7,7 @@ const Sequelize = require('./src/model');
 const Passport = require('./src/util/passport');
 const Roles = require('./src/util/roles');
 const resultHandler = require('./src/middleware/resultHandler');
+const httpLogger = require('./src/middleware/httpLogger');
 
 async function main() {
   const app = new Koa();
@@ -23,6 +24,8 @@ async function main() {
   container.set('roles', roles);
 
   app.use(resultHandler());
+
+  app.use(httpLogger());
 
   app.keys = config.secretKeys;
 
