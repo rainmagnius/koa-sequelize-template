@@ -21,7 +21,7 @@
   "author": "Constantine Timerkhanov",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "config": "^3.1.0",
     "koa": "^2.7.0",
     "koa-passport": "^4.1.3",
